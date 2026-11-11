@@ -1,11 +1,14 @@
+
 {
   "name": "arvion-lab-reel-ia",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "remotion studio",
     "render": "remotion render ArvionReel out/arvion-reel-ia.mp4 --codec=h264 --crf=16 --pixel-format=yuv420p",
-    "capa": "remotion still ArvionReel out/capa.png --frame=45"
+    "capa": "remotion still ArvionReel out/capa.png --frame=45",
+    "check": "tsc --noEmit",
+    "render:preview": "remotion render ArvionReel out/preview.mp4 --codec=h264 --crf=20 --scale=0.5"
   },
   "dependencies": {
     "@remotion/cli": "4.0.250",
