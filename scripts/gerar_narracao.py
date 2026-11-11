@@ -80,9 +80,12 @@ async def main(voice):
     all_words = []
 
     for entry in script:
-        text = clean_text(entry["text"])
-        print(f"DEBUG - Fala {entry['id']}: {text}", flush=True)
-        path = os.path.join(AUDIO_DIR, f"n{entry['id']}.mp3")
+    text = clean_text(entry["text"])
+
+    print("DEBUG - ARQUIVO:", SCRIPT_PATH, flush=True)
+    print("DEBUG - TEXTO RECEBIDO:", repr(text), flush=True)
+
+    path = os.path.join(AUDIO_DIR, f"n{entry['id']}.mp3")
 
         window = entry["end"] - entry["start"]
         rate = 0
