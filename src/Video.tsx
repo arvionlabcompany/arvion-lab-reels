@@ -62,7 +62,9 @@ const Music: React.FC = () => {
   const vol = (f: number) => {
     const t = f / FPS;
     const d = Math.min(...(script as {start: number; end: number}[]).map((e) => (t < e.start ? e.start - t : t > e.end ? t - e.end : 0)));
-    const base = flags.narration ? interpolate(d, [0, 0.5], [0.28, 0.65], CL) : 0.7;
+    const base = flags.narration
+  ? interpolate(d, [0, 0.5], [0.12, 0.22], CL)
+  : 0.22;
     return base * interpolate(t, [0, 1, 58, 60], [0, 1, 1, 0], CL);
   };
   return <Audio src={staticFile("audio/trilha.wav")} volume={vol} />;
