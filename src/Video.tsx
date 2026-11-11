@@ -19,11 +19,24 @@ const SC = [
 ];
 const END = 60;
 
+
 const SFX: {t: number; f: string; v?: number}[] = [
-  {t: 0.2, f: "boom"}, {t: 1.5, f: "blip"}, {t: 4.8, f: "whoosh"}, {t: 14.8, f: "whoosh"}, {t: 20.8, f: "whoosh"},
-  {t: 28.8, f: "whoosh"}, {t: 41.8, f: "whoosh"}, {t: 40.0, f: "riser", v: 0.7}, {t: 42.3, f: "glitch"}, {t: 43.2, f: "glitch"},
-  {t: 44.6, f: "glitch"}, {t: 46.0, f: "heartbeat", v: 0.9}, {t: 52.0, f: "hit"}, {t: 55.8, f: "blip"},
+  {t: 0.2, f: "boom", v: 0.10},
+  {t: 1.5, f: "blip", v: 0.08},
+  {t: 4.8, f: "whoosh", v: 0.10},
+  {t: 14.8, f: "whoosh", v: 0.10},
+  {t: 20.8, f: "whoosh", v: 0.10},
+  {t: 28.8, f: "whoosh", v: 0.10},
+  {t: 41.8, f: "whoosh", v: 0.10},
+  {t: 40.0, f: "riser", v: 0.12},
+  {t: 42.3, f: "glitch", v: 0.08},
+  {t: 43.2, f: "glitch", v: 0.08},
+  {t: 44.6, f: "glitch", v: 0.08},
+  {t: 46.0, f: "heartbeat", v: 0.12},
+  {t: 52.0, f: "hit", v: 0.10},
+  {t: 55.8, f: "blip", v: 0.08},
 ];
+
 
 const Wrap: React.FC<{children: React.ReactNode}> = ({children}) => {
   const f = useCurrentFrame();
