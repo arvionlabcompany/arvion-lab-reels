@@ -275,36 +275,199 @@ export const SceneClose: React.FC<P> = ({dur}) => {
 };
 
 /* ---------- 7. ENCERRAMENTO ARVION LAB ---------- */
+
 export const SceneOutro: React.FC<P> = () => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const words = SIGNATURE.line1.split(" ");
-  const sweep = interpolate(f, [160, 200], [0, 1], {...CL, easing: Easing.out(Easing.cubic)});
-  const logoIn = spring({frame: f - 165, fps, config: {damping: 14}});
+
+  const fade = interpolate(f, [0, 12, 225, 240], [0, 1, 1, 0], CL);
+
+  const question = spring({
+    frame: f - 8,
+    fps,
+    config: {damping: 14, stiffness: 150},
+  });
+
+  const options = spring({
+    frame: f - 55,
+    fps,
+    config: {damping: 13, stiffness: 170},
+  });
+
+  const cta = spring({
+    frame: f - 120,
+    fps,
+    config: {damping: 14, stiffness: 150},
+  });
+
+  const logo = spring({
+    frame: f - 180,
+    fps,
+    config: {damping: 14},
+  });
+
+  const pulse = 1 + Math.sin(f * 0.12) * 0.035;
+
   return (
-    <AbsoluteFill style={{background: `radial-gradient(ellipse at 50% 55%, #0A2150 0%, ${C.black} 70%)`}}>
-      <GridFloor top={1250} speed={0.5} />
-      <Particles n={50} seed="out" speed={0.6} />
-      <AbsoluteFill style={{justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
-        <div style={{display: "flex", gap: 22, flexWrap: "wrap", justifyContent: "center", maxWidth: 940, marginTop: -160}}>
-          {words.map((w, i) => {
-            const s = spring({frame: f - 110 - i * 8, fps, config: {damping: 13, stiffness: 180}});
-            return (
-              <span key={i} style={{fontFamily: FONT, fontWeight: 900, fontSize: 112, color: w.startsWith("FUTURO") ? C.yellow : C.white, opacity: s, transform: `translateY(${(1 - s) * 40}px)`, textShadow: `0 0 50px ${C.blue}`}}>{w}</span>
-            );
-          })}
+    <AbsoluteFill
+      style={{
+        background: `radial-gradient(ellipse at 50% 45%, #102D60 0%, ${C.deep} 48%, ${C.black} 100%)`,
+        opacity: fade,
+        overflow: "hidden",
+      }}
+    >
+      <GridFloor top={1350} speed={0.4} />
+      <Particles n={45} seed="outro-v2" speed={0.4} />
+
+      <AbsoluteFill
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 65,
+        }}
+      >
+        <div
+          style={{
+            fontFamily: MONO,
+            fontSize: 27,
+            color: C.cyan,
+            letterSpacing: 8,
+            marginBottom: 35,
+            opacity: question,
+          }}
+        >
+          // DECISÃO FINAL
         </div>
-        <div style={{width: 700 * sweep, height: 3, background: `linear-gradient(90deg, transparent, ${C.cyan}, transparent)`, margin: "50px 0", boxShadow: `0 0 20px ${C.cyan}`}} />
-        <div style={{opacity: logoIn, transform: `scale(${0.9 + 0.1 * logoIn})`, textAlign: "center"}}>
-          <svg width={110} height={110} viewBox="0 0 100 100" style={{marginBottom: 14}}>
-            <polygon points="50,5 90,27 90,73 50,95 10,73 10,27" fill="none" stroke={C.cyan} strokeWidth={4} />
-            <polyline points="28,70 50,28 72,70" fill="none" stroke={C.white} strokeWidth={6} strokeLinejoin="round" />
-            <line x1={38} y1={56} x2={62} y2={56} stroke={C.yellow} strokeWidth={5} />
-          </svg>
-          <div style={{fontFamily: FONT, fontWeight: 800, fontSize: 82, letterSpacing: 22, color: C.white, paddingLeft: 22}}>
-            {SIGNATURE.brand[0]} <span style={{color: C.cyan}}>{SIGNATURE.brand[1]}</span>
+
+        <div
+          style={{
+            fontFamily: FONT,
+            fontSize: 91,
+            lineHeight: 1.05,
+            fontWeight: 900,
+            color: C.white,
+            textAlign: "center",
+            transform: `translateY(${(1 - question) * 45}px)`,
+            opacity: question,
+            textShadow: `0 0 45px ${C.blue}88`,
+          }}
+        >
+          VOCÊ
+          <br />
+          CONFIARIA?
+        </div>
+
+        <div
+          style={{
+            marginTop: 35,
+            fontFamily: FONT,
+            fontSize: 37,
+            color: C.white,
+            textAlign: "center",
+            lineHeight: 1.35,
+            opacity: question,
+            maxWidth: 850,
+          }}
+        >
+          Sua vida nas mãos de uma inteligência artificial?
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            gap: 25,
+            marginTop: 75,
+            opacity: options,
+            transform: `scale(${0.85 + options * 0.15})`,
+          }}
+        >
+          {["SIM", "NÃO"].map((label, i) => (
+            <div
+              key={label}
+              style={{
+                flex: 1,
+                padding: "35px 10px",
+                borderRadius: 18,
+                textAlign: "center",
+                fontFamily: FONT,
+                fontWeight: 900,
+                fontSize: 57,
+                color: C.white,
+                background: i === 0 ? "#123F75" : "#303B50",
+                border: `3px solid ${i === 0 ? C.cyan : C.yellow}`,
+                boxShadow: `0 0 ${35 * pulse}px ${i === 0 ? C.blue : C.yellow}66`,
+              }}
+            >
+              {label}
+            </div>
+          ))}
+        </div>
+
+        <div
+          style={{
+            marginTop: 55,
+            textAlign: "center",
+            opacity: cta,
+            transform: `translateY(${(1 - cta) * 25}px)`,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: FONT,
+              fontSize: 43,
+              fontWeight: 900,
+              color: C.yellow,
+              letterSpacing: 2,
+            }}
+          >
+            COMENTE SUA RESPOSTA!
           </div>
-          <div style={{fontFamily: MONO, fontSize: 30, color: "#9CB3D6", letterSpacing: 4, marginTop: 18}}>{SIGNATURE.handle}</div>
+
+          <div
+            style={{
+              fontFamily: MONO,
+              fontSize: 27,
+              color: C.white,
+              marginTop: 20,
+            }}
+          >
+            A CONTINUAÇÃO VEM AÍ...
+          </div>
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            bottom: 105,
+            textAlign: "center",
+            opacity: logo,
+            transform: `scale(${0.9 + logo * 0.1})`,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: FONT,
+              fontWeight: 900,
+              fontSize: 70,
+              letterSpacing: 14,
+              color: C.white,
+            }}
+          >
+            ARVION <span style={{color: C.cyan}}>LAB</span>
+          </div>
+
+          <div
+            style={{
+              fontFamily: MONO,
+              fontSize: 23,
+              color: "#9CB3D6",
+              letterSpacing: 5,
+              marginTop: 12,
+            }}
+          >
+            {SIGNATURE.handle}
+          </div>
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
