@@ -81,6 +81,7 @@ async def main(voice):
 
     for entry in script:
         text = clean_text(entry["text"])
+        print(f"DEBUG - Fala {entry['id']}: {text}", flush=True)
         path = os.path.join(AUDIO_DIR, f"n{entry['id']}.mp3")
 
         window = entry["end"] - entry["start"]
