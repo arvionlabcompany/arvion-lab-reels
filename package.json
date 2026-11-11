@@ -1,0 +1,21 @@
+{
+  "name": "arvion-lab-reel-ia",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render ArvionReel out/arvion-reel-ia.mp4 --codec=h264 --crf=16 --pixel-format=yuv420p",
+    "capa": "remotion still ArvionReel out/capa.png --frame=45"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.250",
+    "@remotion/google-fonts": "4.0.250",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.250"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.3",
+    "typescript": "5.5.4"
+  }
+}
