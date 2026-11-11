@@ -20,6 +20,7 @@ for e in script:
         cur.append((t, s, acc))
         if len(cur) >= 3 or re.search(r"[.,?!…:]$", t): flush()
     flush()
+    os.makedirs(os.path.join(ROOT, "docs"), exist_ok=True)
 with open(os.path.join(ROOT, "docs", "legendas.srt"), "w", encoding="utf-8") as f:
     for i, (s, e, txt) in enumerate(chunks, 1):
         f.write(f"{i}\n{ts(s)} --> {ts(e)}\n{txt}\n\n")
