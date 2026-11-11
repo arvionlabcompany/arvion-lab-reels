@@ -1,1 +1,6 @@
-{"narration": false, "music": true, "sfx": true}
+
+{
+  "narration": true,
+  "music": true,
+  "sfx": true
+}
