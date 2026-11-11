@@ -16,7 +16,7 @@ jobs:
   render:
     name: Gerar Reel Arvion Lab
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
 
     steps:
       - name: Baixar projeto
@@ -32,14 +32,31 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Instalar dependências
+      - name: Instalar FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
+          ffprobe -version
+
+      - name: Instalar dependências Node
         run: npm install
 
       - name: Instalar Edge TTS
-        run: python -m pip install edge-tts
+        run: python -m pip install --upgrade edge-tts
 
-      - name: Gerar narração
+      - name: Gerar narração e tempos das palavras
         run: python scripts/gerar_narracao.py --voz "${{ inputs.voice }}"
+
+      - name: Verificar arquivos gerados
+        run: |
+          test -f src/wordTimings.json
+          test -s src/wordTimings.json
+          test -f public/audio/narracao/n0.mp3
+          echo "Arquivos de narração encontrados."
+
+      - name: Verificar TypeScript
+        run: npm run check
 
       - name: Renderizar MP4
         run: npm run render
