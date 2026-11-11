@@ -1,11 +1,12 @@
 
 [
-  {
-    "id": 0,
-    "start": 0.3,
-    "end": 4.9,
-    "text": "Imagine acordar amanhã... e descobrir que uma *inteligência artificial* está tomando *decisões* por toda a *humanidade*."
-  },
+  
+{
+  "id": 0,
+  "start": 0.3,
+  "end": 4.9,
+  "text": "Imagine: uma inteligência artificial já decide por toda a humanidade."
+},
   {
     "id": 1,
     "start": 5.3,
