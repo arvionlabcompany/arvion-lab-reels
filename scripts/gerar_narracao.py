@@ -92,7 +92,7 @@ async def main(voice):
         rate = 0
         success = False
 
-        for attempt in range(6):
+                for attempt in range(6):
             words = await generate_audio(
                 text, path, voice, rate, entry["start"]
             )
