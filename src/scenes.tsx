@@ -242,7 +242,7 @@ export const SceneClose: React.FC<P> = ({dur}) => {
   const p = (f - 120) % 45;
   const pulse = f >= 120 && f < 195 ? Math.exp(-p / 5) + (p > 12 ? 0.6 * Math.exp(-(p - 12) / 5) : 0) : 0;
   const col = interpolateColors(f, [195, 230], [C.cyan, C.yellow]);
-  const zoom = interpolate(f, [0, 120, 195, dur - 30, dur], [1, 1.45, 1.5, 1.7, 4.2], CL);
+  const zoom = interpolate(f, [0, 120, 195, dur - 30, dur], [1, 1.45, 1.5, 1.7, 2.2], CL);
   const g = [8, 9, 31, 32, 33, 96, 97].includes(f);
   const dark = interpolate(f, [120, 135, 185, 200], [0, 0.4, 0.4, 0], CL);
   return (
