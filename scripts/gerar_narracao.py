@@ -79,13 +79,14 @@ async def main(voice):
 
     all_words = []
 
+    
     for entry in script:
-    text = clean_text(entry["text"])
+        text = clean_text(entry["text"])
 
-    print("DEBUG - ARQUIVO:", SCRIPT_PATH, flush=True)
-    print("DEBUG - TEXTO RECEBIDO:", repr(text), flush=True)
+        print("DEBUG - ARQUIVO:", SCRIPT_PATH, flush=True)
+        print("DEBUG - TEXTO RECEBIDO:", repr(text), flush=True)
 
-    path = os.path.join(AUDIO_DIR, f"n{entry['id']}.mp3")
+        path = os.path.join(AUDIO_DIR, f"n{entry['id']}.mp3")
 
         window = entry["end"] - entry["start"]
         rate = 0
@@ -116,6 +117,7 @@ async def main(voice):
                 f"A fala {entry['id']} não cabe no intervalo reservado. "
                 "Encurte o texto ou aumente o intervalo no script.json."
             )
+
 
     with open(TIMINGS_PATH, "w", encoding="utf-8") as file:
         json.dump(all_words, file, ensure_ascii=False, indent=2)
