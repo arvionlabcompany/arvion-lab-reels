@@ -1,50 +1,51 @@
+
 [
   {
     "id": 0,
     "start": 0.3,
-    "end": 7.2,
-    "text": "Imagine que amanhã uma *inteligência artificial* tome uma decisão capaz de mudar milhões de vidas."
+    "end": 6.5,
+    "text": "Imagine entrar no trabalho amanhã... e descobrir que uma *inteligência artificial* pode fazer tudo o que você faz."
   },
   {
     "id": 1,
-    "start": 7.6,
-    "end": 18.4,
-    "text": "Ela consegue analisar *bilhões de informações* em segundos, prever riscos e encontrar soluções que nenhum ser humano conseguiria calcular."
+    "start": 6.9,
+    "end": 14.5,
+    "text": "Ela não precisa dormir, não se cansa e consegue analisar milhares de informações em poucos segundos."
   },
   {
     "id": 2,
-    "start": 18.8,
-    "end": 23.6,
-    "text": "Mas existe uma pergunta que quase ninguém está fazendo..."
+    "start": 14.9,
+    "end": 21.5,
+    "text": "Empresas já estão usando máquinas para criar, atender clientes, escrever e até tomar decisões."
   },
   {
     "id": 3,
-    "start": 24.0,
-    "end": 32.2,
-    "text": "Se uma decisão dessa inteligência causar uma *tragédia*... quem será o responsável?"
+    "start": 21.9,
+    "end": 28.5,
+    "text": "Mas isso significa que os seres humanos estão prestes a se tornar *desnecessários*?"
   },
   {
     "id": 4,
-    "start": 32.6,
-    "end": 40.0,
-    "text": "O programador? A empresa que a criou? O governo? Ou a própria *inteligência artificial*?"
+    "start": 28.9,
+    "end": 36.5,
+    "text": "Talvez algumas profissões desapareçam. Outras vão mudar completamente. E novas oportunidades vão surgir."
   },
   {
     "id": 5,
-    "start": 40.4,
-    "end": 49.8,
-    "text": "Estamos criando máquinas cada vez mais inteligentes, mas ainda precisamos decidir *quem terá o controle*."
+    "start": 36.9,
+    "end": 44.5,
+    "text": "A verdadeira vantagem não será competir com a inteligência artificial, mas aprender a trabalhar com ela."
   },
   {
     "id": 6,
-    "start": 50.2,
-    "end": 55.1,
-    "text": "Porque ter poder para decidir não significa saber o que é *certo*."
+    "start": 44.9,
+    "end": 52.5,
+    "text": "Porque a tecnologia pode executar tarefas... mas criatividade, empatia e responsabilidade continuam sendo essenciais."
   },
   {
     "id": 7,
-    "start": 55.5,
+    "start": 52.9,
     "end": 59.5,
-    "text": "Você confiaria sua vida a uma *inteligência artificial*?"
+    "text": "E você? Acredita que a IA vai substituir os humanos? Comente: SIM ou NÃO."
   }
 ]
