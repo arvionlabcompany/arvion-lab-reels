@@ -18,7 +18,6 @@ type WordTiming = {
 };
 
 const timings = wordTimings as WordTiming[];
-
 const GROUP_SIZE = 3;
 
 function buildGroups(words: WordTiming[]) {
@@ -53,7 +52,6 @@ function buildGroups(words: WordTiming[]) {
   }
 
   finish();
-
   return groups;
 }
 
@@ -62,7 +60,6 @@ const groups = buildGroups(timings);
 export const Captions: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-
   const time = frame / fps;
 
   const active = groups.find(
@@ -89,7 +86,8 @@ export const Captions: React.FC = () => {
       style={{
         justifyContent: "flex-end",
         alignItems: "center",
-        paddingHorizontal: 65,
+        paddingLeft: 65,
+        paddingRight: 65,
         paddingBottom: 470,
         pointerEvents: "none",
       }}
