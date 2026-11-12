@@ -41,11 +41,11 @@
     "start": 44.9,
     "end": 52.5,
     "text": "Porque a tecnologia pode executar tarefas... mas criatividade, empatia e responsabilidade continuam sendo essenciais."
-  },
+  }, 
   {
-    "id": 7,
-    "start": 52.9,
-    "end": 59.5,
-    "text": "E você? Acredita que a IA vai substituir os humanos? Comente: SIM ou NÃO."
+  "id": 7,
+  "start": 52.9,
+  "end": 59.5,
+  "text": "A IA vai substituir você? Comente: SIM ou NÃO."
   }
 ]
