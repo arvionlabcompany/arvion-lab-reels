@@ -1,50 +1,50 @@
 [
-{
-  "id": 0,
-  "start": 0.3,
-  "end": 4.9,
-  "text": "Imagine: uma inteligência artificial já decide por toda a humanidade."
-},
+  {
+    "id": 0,
+    "start": 0.3,
+    "end": 7.2,
+    "text": "Imagine que amanhã uma *inteligência artificial* tome uma decisão capaz de mudar milhões de vidas."
+  },
   {
     "id": 1,
-    "start": 5.3,
-    "end": 14.6,
-    "text": "Ela começa *aprendendo*. Analisa *milhões* de informações, identifica *padrões* e executa tarefas em uma *velocidade* impossível para qualquer ser humano."
+    "start": 7.6,
+    "end": 18.4,
+    "text": "Ela consegue analisar *bilhões de informações* em segundos, prever riscos e encontrar soluções que nenhum ser humano conseguiria calcular."
   },
-{
-  "id": 2,
-  "start": 15.3,
-  "end": 24.6,
-  "text": "Empresas dependem dela. Robôs trabalham sozinhos. Cidades ficam inteligentes. Tudo se conecta."
-},
+  {
+    "id": 2,
+    "start": 18.8,
+    "end": 23.6,
+    "text": "Mas existe uma pergunta que quase ninguém está fazendo..."
+  },
   {
     "id": 3,
-    "start": 25.3,
-    "end": 39.6,
-    "text": "Mas existe uma pergunta que poucos fazem: até que ponto devemos *confiar* em uma tecnologia capaz de tomar *decisões* sem que entendamos completamente como ela *funciona*?"
+    "start": 24.0,
+    "end": 32.2,
+    "text": "Se uma decisão dessa inteligência causar uma *tragédia*... quem será o responsável?"
   },
   {
     "id": 4,
-    "start": 40.3,
-    "end": 45.8,
-    "text": "Talvez o maior desafio do futuro não seja criar uma inteligência artificial cada vez mais *poderosa*..."
+    "start": 32.6,
+    "end": 40.0,
+    "text": "O programador? A empresa que a criou? O governo? Ou a própria *inteligência artificial*?"
   },
   {
     "id": 5,
-    "start": 48.6,
-    "end": 51.8,
-    "text": "...mas garantir que a *humanidade* continue no *controle*."
+    "start": 40.4,
+    "end": 49.8,
+    "text": "Estamos criando máquinas cada vez mais inteligentes, mas ainda precisamos decidir *quem terá o controle*."
   },
- {
-  "id": 6,
-  "start": 52.3,
-  "end": 55.3,
-  "text": "Você confiaria sua vida a ela?"
- },
   {
-  "id": 7,
-  "start": 56.0,
-  "end": 59.5,
-  "text": "Comente SIM ou NÃO!"
+    "id": 6,
+    "start": 50.2,
+    "end": 55.1,
+    "text": "Porque ter poder para decidir não significa saber o que é *certo*."
+  },
+  {
+    "id": 7,
+    "start": 55.5,
+    "end": 59.5,
+    "text": "Você confiaria sua vida a uma *inteligência artificial*?"
   }
 ]
