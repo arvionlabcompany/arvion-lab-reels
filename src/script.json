@@ -1,6 +1,5 @@
 
 [
-  
 {
   "id": 0,
   "start": 0.3,
@@ -13,14 +12,12 @@
     "end": 14.6,
     "text": "Ela começa *aprendendo*. Analisa *milhões* de informações, identifica *padrões* e executa tarefas em uma *velocidade* impossível para qualquer ser humano."
   },
-
 {
   "id": 2,
   "start": 15.3,
   "end": 24.6,
   "text": "Empresas dependem dela. Robôs trabalham sozinhos. Cidades ficam inteligentes. Tudo se conecta."
 },
-
   {
     "id": 3,
     "start": 25.3,
