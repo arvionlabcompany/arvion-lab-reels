@@ -79,7 +79,6 @@ async def main(voice):
 
     all_words = []
 
-    
     for entry in script:
         text = clean_text(entry["text"])
 
@@ -92,7 +91,7 @@ async def main(voice):
         rate = 0
         success = False
 
-                for attempt in range(6):
+        for attempt in range(6):
             words = await generate_audio(
                 text, path, voice, rate, entry["start"]
             )
@@ -102,7 +101,8 @@ async def main(voice):
             print(
                 f"Fala {entry['id']}: "
                 f"{duration:.2f}s / {window:.2f}s "
-                f"(velocidade {rate:+d}%)"
+                f"(velocidade {rate:+d}%)",
+                flush=True
             )
 
             if duration <= window:
@@ -117,7 +117,6 @@ async def main(voice):
                 f"A fala {entry['id']} não cabe no intervalo reservado. "
                 "Encurte o texto ou aumente o intervalo no script.json."
             )
-
 
     with open(TIMINGS_PATH, "w", encoding="utf-8") as file:
         json.dump(all_words, file, ensure_ascii=False, indent=2)
