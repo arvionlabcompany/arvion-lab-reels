@@ -7,7 +7,7 @@ import {
   useCurrentFrame,
 } from "remotion";
 
-import { C, FONT, MONO } from "./config";
+import { C, MONO } from "./config";
 
 export const CL = {
   extrapolateLeft: "clamp" as const,
@@ -307,7 +307,6 @@ export const Overlay: React.FC = () => {
             rgba(0,0,0,0.48) 100%
           )
         `,
-        zIndex: 20,
       }}
     >
       <div
