@@ -31,12 +31,12 @@ const END = 60;
 
 const SC = [
   { id: "lab", from: 0, Comp: SceneLab },
-  { id: "holo", from: 5, Comp: SceneHolo },
-  { id: "city", from: 15, Comp: SceneCity },
-  { id: "work", from: 21, Comp: SceneWork },
-  { id: "human", from: 29, Comp: SceneHuman },
-  { id: "close", from: 42, Comp: SceneClose },
-  { id: "outro", from: 52, Comp: SceneOutro },
+  { id: "holo", from: 7, Comp: SceneHolo },
+  { id: "city", from: 18, Comp: SceneCity },
+  { id: "human", from: 24, Comp: SceneHuman },
+  { id: "work", from: 32, Comp: SceneWork },
+  { id: "close", from: 40, Comp: SceneClose },
+  { id: "outro", from: 50, Comp: SceneOutro },
 ];
 
 type ScriptEntry = {
@@ -54,19 +54,17 @@ const SFX: {
   v: number;
 }[] = [
   { t: 0.2, f: "boom", v: 0.08 },
-  { t: 1.5, f: "blip", v: 0.06 },
-  { t: 4.8, f: "whoosh", v: 0.08 },
-  { t: 14.8, f: "whoosh", v: 0.08 },
-  { t: 20.8, f: "whoosh", v: 0.08 },
-  { t: 28.8, f: "whoosh", v: 0.08 },
-  { t: 41.8, f: "whoosh", v: 0.08 },
+  { t: 0.5, f: "heartbeat", v: 0.07 },
+  { t: 6.8, f: "whoosh", v: 0.08 },
+  { t: 17.8, f: "whoosh", v: 0.08 },
+  { t: 23.7, f: "glitch", v: 0.07 },
+  { t: 24.0, f: "heartbeat", v: 0.08 },
+  { t: 31.8, f: "hit", v: 0.08 },
+  { t: 39.8, f: "whoosh", v: 0.08 },
   { t: 40.0, f: "riser", v: 0.10 },
-  { t: 42.3, f: "glitch", v: 0.06 },
-  { t: 43.2, f: "glitch", v: 0.06 },
-  { t: 44.6, f: "glitch", v: 0.06 },
-  { t: 46.0, f: "heartbeat", v: 0.09 },
-  { t: 52.0, f: "hit", v: 0.08 },
-  { t: 55.8, f: "blip", v: 0.06 },
+  { t: 49.8, f: "boom", v: 0.08 },
+  { t: 54.9, f: "hit", v: 0.08 },
+  { t: 57.8, f: "blip", v: 0.06 },
 ];
 
 const Wrap: React.FC<{ children: React.ReactNode }> = ({
