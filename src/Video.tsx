@@ -14,29 +14,31 @@ import flags from "./flags.json";
 import script from "./script.json";
 
 import { Captions } from "./Captions";
-import { AiClip, CL, Overlay } from "./fx";
+import { CL, Overlay } from "./fx";
 
 import {
-  SceneClose,
-  SceneCity,
-  SceneHolo,
-  SceneHuman,
-  SceneLab,
-  SceneOutro,
-  SceneWork,
+  SceneFuture,
+  SceneMachine,
+  SceneAutomation,
+  SceneHumanVsAI,
+  SceneJobs,
+  SceneCollab,
+  SceneHumanity,
+  SceneOutroAI,
 } from "./scenes";
 
 const OVERLAP = 12;
 const END = 60;
 
 const SC = [
-  { id: "lab", from: 0, Comp: SceneLab },
-  { id: "holo", from: 7, Comp: SceneHolo },
-  { id: "city", from: 18, Comp: SceneCity },
-  { id: "human", from: 24, Comp: SceneHuman },
-  { id: "work", from: 32, Comp: SceneWork },
-  { id: "close", from: 40, Comp: SceneClose },
-  { id: "outro", from: 50, Comp: SceneOutro },
+  { id: "future", from: 0, Comp: SceneFuture },
+  { id: "machine", from: 7, Comp: SceneMachine },
+  { id: "automation", from: 15, Comp: SceneAutomation },
+  { id: "human-vs-ai", from: 22, Comp: SceneHumanVsAI },
+  { id: "jobs", from: 29, Comp: SceneJobs },
+  { id: "collab", from: 37, Comp: SceneCollab },
+  { id: "humanity", from: 45, Comp: SceneHumanity },
+  { id: "outro-ai", from: 53, Comp: SceneOutroAI },
 ];
 
 type ScriptEntry = {
@@ -53,18 +55,15 @@ const SFX: {
   f: string;
   v: number;
 }[] = [
-  { t: 0.2, f: "boom", v: 0.08 },
-  { t: 0.5, f: "heartbeat", v: 0.07 },
-  { t: 6.8, f: "whoosh", v: 0.08 },
-  { t: 17.8, f: "whoosh", v: 0.08 },
-  { t: 23.7, f: "glitch", v: 0.07 },
-  { t: 24.0, f: "heartbeat", v: 0.08 },
-  { t: 31.8, f: "hit", v: 0.08 },
-  { t: 39.8, f: "whoosh", v: 0.08 },
-  { t: 40.0, f: "riser", v: 0.10 },
-  { t: 49.8, f: "boom", v: 0.08 },
-  { t: 54.9, f: "hit", v: 0.08 },
-  { t: 57.8, f: "blip", v: 0.06 },
+  { t: 0.2, f: "boom", v: 0.09 },
+  { t: 6.5, f: "whoosh", v: 0.08 },
+  { t: 14.5, f: "glitch", v: 0.07 },
+  { t: 21.5, f: "heartbeat", v: 0.08 },
+  { t: 28.5, f: "hit", v: 0.08 },
+  { t: 36.5, f: "whoosh", v: 0.08 },
+  { t: 44.5, f: "riser", v: 0.10 },
+  { t: 52.5, f: "boom", v: 0.08 },
+  { t: 57.0, f: "blip", v: 0.06 },
 ];
 
 const Wrap: React.FC<{ children: React.ReactNode }> = ({
@@ -82,7 +81,7 @@ const Wrap: React.FC<{ children: React.ReactNode }> = ({
   const flash = interpolate(
     f,
     [0, 8],
-    [0.5, 0],
+    [0.35, 0],
     CL
   );
 
@@ -196,7 +195,6 @@ export const ArvionReel: React.FC = () => {
           >
             <Wrap>
               <scene.Comp dur={duration} />
-              <AiClip name={scene.id} />
             </Wrap>
           </Sequence>
         );
