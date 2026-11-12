@@ -473,3 +473,286 @@ export const SceneOutro: React.FC<P> = () => {
     </AbsoluteFill>
   );
 };
+/* =====================================================
+   REEL 03 — CENAS NOVAS: A IA VAI SUBSTITUIR HUMANOS?
+   ===================================================== */
+
+const ReelGlow: React.FC<{x: number; y: number; size: number; color?: string}> = ({
+  x, y, size, color = C.cyan
+}) => (
+  <div style={{
+    position: "absolute",
+    left: x,
+    top: y,
+    width: size,
+    height: size,
+    borderRadius: "50%",
+    background: `radial-gradient(circle, ${color}66 0%, ${color}18 35%, transparent 72%)`,
+    filter: "blur(18px)",
+  }} />
+);
+
+const ReelFigure: React.FC<{x: number; y: number; scale?: number; color?: string}> = ({
+  x, y, scale = 1, color = C.cyan
+}) => (
+  <svg
+    width={300 * scale}
+    height={620 * scale}
+    viewBox="0 0 300 620"
+    style={{position: "absolute", left: x, top: y}}
+  >
+    <defs>
+      <linearGradient id="reel-person" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor={color} stopOpacity=".65" />
+        <stop offset="1" stopColor="#02050B" />
+      </linearGradient>
+    </defs>
+    <circle cx="150" cy="105" r="66" fill="#030711" stroke={color} strokeWidth="4" />
+    <path d="M75 190 Q150 155 225 190 L285 590 L15 590Z"
+      fill="url(#reel-person)" stroke={color} strokeOpacity=".65" strokeWidth="4" />
+    <path d="M85 240 L150 330 L215 240" fill="none" stroke={color} strokeOpacity=".5" strokeWidth="3" />
+  </svg>
+);
+
+/* 1 — A pessoa encontra uma IA ativa no escritório */
+export const SceneFuture: React.FC<P> = ({dur}) => {
+  const f = useCurrentFrame();
+  const zoom = interpolate(f, [0, dur], [1, 1.18], CL);
+  const screen = interpolate(f, [5, 22, 38], [0, 1, 0.65], CL);
+
+  return (
+    <AbsoluteFill style={{background: "linear-gradient(160deg,#02050B,#071A38 55%,#02050B)", overflow: "hidden"}}>
+      <ReelGlow x={260} y={220} size={700} />
+      <div style={{position:"absolute", left:80, top:260, width:920, height:900,
+        border:"3px solid #35D9FF66", background:"#07152B",
+        boxShadow:"0 0 100px #087DFF44", transform:`scale(${zoom})`}}>
+        <div style={{height:55, background:"#10294B", borderBottom:"2px solid #35D9FF66",
+          color:C.cyan, fontFamily:MONO, fontSize:23, padding:15}}>
+          ARVION // SISTEMA AUTÔNOMO
+        </div>
+        <div style={{padding:40, opacity:screen}}>
+          <div style={{fontFamily:MONO, fontSize:34, color:C.cyan}}>BOM DIA.</div>
+          <div style={{fontFamily:FONT, fontSize:58, fontWeight:900, color:C.white, marginTop:25}}>
+            ESTOU PRONTA
+            <br/>PARA TRABALHAR.
+          </div>
+          {[0,1,2,3].map(i=><div key={i} style={{height:12, width:`${85-i*13}%`, marginTop:35,
+            background:C.cyan, opacity:.5-i*.08, boxShadow:"0 0 20px #35D9FF"}} />)}
+        </div>
+      </div>
+      <ReelFigure x={390} y={1110} scale={1.25}/>
+      <Hud x={65} y={150} lines={["NOVO EXPEDIENTE", "SISTEMA ONLINE"]}/>
+      <Particles n={35} seed="reel-future"/>
+    </AbsoluteFill>
+  );
+};
+
+/* 2 — Robô e processamento em alta velocidade */
+export const SceneMachine: React.FC<P> = ({dur}) => {
+  const f = useCurrentFrame();
+  const pulse = 1 + Math.sin(f*.13)*.04;
+  return (
+    <AbsoluteFill style={{background:"radial-gradient(ellipse at 50% 45%,#123B70,#02050B 70%)", overflow:"hidden"}}>
+      <ReelGlow x={180} y={300} size={720}/>
+      <svg width="1080" height="1920" style={{position:"absolute",inset:0}}>
+        {[0,1,2,3,4].map(i=><circle key={i} cx="540" cy="800" r={180+i*100}
+          fill="none" stroke={i%2?C.blue:C.cyan} strokeWidth="3"
+          strokeDasharray="30 22" opacity=".6"
+          transform={`rotate(${f*(i%2?-.8:1)} 540 800)`}/>)}
+      </svg>
+      <div style={{position:"absolute",left:250,top:430,width:580,height:760,
+        border:"4px solid #35D9FF88",borderRadius:100,
+        background:"linear-gradient(145deg,#17345B,#02050B)",
+        boxShadow:"0 0 100px #168CFF66",transform:`scale(${pulse})`}}>
+        <div style={{position:"absolute",left:85,top:180,width:410,height:170,
+          borderRadius:60,background:"#020711",border:"3px solid #35D9FF88",
+          display:"flex",justifyContent:"space-evenly",alignItems:"center"}}>
+          {[0,1].map(i=><div key={i} style={{width:90,height:48,borderRadius:30,
+            background:C.cyan,boxShadow:"0 0 45px #35D9FF"}}/>)}
+        </div>
+        <div style={{position:"absolute",left:130,top:430,width:320,height:12,background:C.cyan,
+          boxShadow:"0 0 35px #35D9FF"}}/>
+      </div>
+      <Hud x={65} y={160} lines={["PROCESSAMENTO", `${Math.floor(98+Math.sin(f*.1)*2)}% // ATIVO`]}/>
+      <Particles n={55} seed="reel-machine" speed={1.2}/>
+    </AbsoluteFill>
+  );
+};
+
+/* 3 — Empresa automatizada, braços robóticos e painéis */
+export const SceneAutomation: React.FC<P> = ({dur}) => {
+  const f = useCurrentFrame();
+  const angle = Math.sin(f*.045)*18;
+  return (
+    <AbsoluteFill style={{background:"linear-gradient(180deg,#02050B,#0A1C3C 60%,#02050B)",overflow:"hidden"}}>
+      <ReelGlow x={340} y={500} size={600}/>
+      {[0,1,2].map(i=><div key={i} style={{
+        position:"absolute",left:70+i*320,top:390+i*100,width:270,height:600,
+        border:"2px solid #35D9FF77",background:"linear-gradient(145deg,#102B50,#030813)",
+        boxShadow:"0 0 45px #087DFF33",padding:20
+      }}>
+        <div style={{fontFamily:MONO,color:C.cyan,fontSize:23}}>ROBO.{i+1}</div>
+        <div style={{height:5,background:C.cyan,marginTop:25,width:`${60+i*10}%`}}/>
+        <div style={{height:180,marginTop:45,border:"2px solid #35D9FF55",
+          background:`repeating-linear-gradient(0deg,transparent 0 18px,#168CFF22 19px 21px)`}}/>
+        <div style={{fontFamily:MONO,color:C.white,fontSize:20,marginTop:25}}>AUTOMAÇÃO</div>
+      </div>)}
+      <svg width="1080" height="1920" style={{position:"absolute",inset:0}}>
+        <path d="M120 1300 L350 1100 L550 1250 L790 950 L1000 1120"
+          fill="none" stroke={C.cyan} strokeWidth="12" strokeLinecap="round"
+          transform={`rotate(${angle/8} 540 1100)`}/>
+      </svg>
+      <Hud x={65} y={160} lines={["OPERAÇÃO EMPRESARIAL","FLUXO AUTOMATIZADO"]}/>
+      <Particles n={28} seed="reel-auto"/>
+    </AbsoluteFill>
+  );
+};
+
+/* 4 — Confronto visual entre humano e inteligência artificial */
+export const SceneHumanVsAI: React.FC<P> = ({dur}) => {
+  const f = useCurrentFrame();
+  const split = interpolate(f,[0,dur],[0,35],CL);
+  return (
+    <AbsoluteFill style={{background:"#02050B",overflow:"hidden"}}>
+      <div style={{position:"absolute",left:0,top:0,width:"50%",height:"100%",
+        background:"radial-gradient(ellipse at 50% 45%,#16416C,#02050B)"}}/>
+      <div style={{position:"absolute",right:0,top:0,width:"50%",height:"100%",
+        background:"radial-gradient(ellipse at 50% 45%,#073E60,#02050B)"}}/>
+      <ReelFigure x={80} y={800} scale={1.2} color="#8CB8FF"/>
+      <div style={{position:"absolute",right:110,top:690,width:360,height:500,
+        borderRadius:"45%",border:"5px solid #35D9FF",
+        background:"radial-gradient(circle,#1C75B5,#02050B 70%)",
+        boxShadow:"0 0 100px #168CFF77",transform:`translateY(${Math.sin(f*.08)*split}px)`}}>
+        <div style={{position:"absolute",left:65,top:160,width:70,height:25,
+          background:C.cyan,boxShadow:"0 0 30px #35D9FF"}}/>
+        <div style={{position:"absolute",right:65,top:160,width:70,height:25,
+          background:C.cyan,boxShadow:"0 0 30px #35D9FF"}}/>
+      </div>
+      <div style={{position:"absolute",left:0,right:0,top:1330,textAlign:"center",
+        fontFamily:MONO,fontSize:30,color:C.white,letterSpacing:8}}>
+        HUMANO <span style={{color:C.cyan}}> VS </span> IA
+      </div>
+      <Hud x={65} y={160} lines={["O FUTURO DO TRABALHO","QUEM SERÁ NECESSÁRIO?"]}/>
+    </AbsoluteFill>
+  );
+};
+
+/* 5 — Profissões diferentes em transformação */
+export const SceneJobs: React.FC<P> = ({dur}) => {
+  const f = useCurrentFrame();
+  const jobs = ["MEDICINA","ENGENHARIA","DESIGN","EDUCAÇÃO"];
+  return (
+    <AbsoluteFill style={{background:"linear-gradient(145deg,#06152E,#02050B 65%)",overflow:"hidden"}}>
+      <ReelGlow x={250} y={400} size={650}/>
+      {jobs.map((job,i)=>{
+        const x=65+(i%2)*500;
+        const y=420+Math.floor(i/2)*570;
+        const scale=interpolate(f,[i*5,i*5+18],[.8,1],{...CL});
+        return <div key={job} style={{position:"absolute",left:x,top:y,width:450,height:470,
+          border:"2px solid #35D9FF88",background:"linear-gradient(145deg,#12335A,#030813)",
+          boxShadow:"0 0 40px #087DFF33",transform:`scale(${scale})`,padding:28,boxSizing:"border-box"}}>
+          <div style={{fontFamily:MONO,fontSize:25,color:C.cyan}}>SETOR 0{i+1}</div>
+          <div style={{fontFamily:FONT,fontSize:43,fontWeight:900,color:C.white,marginTop:30}}>{job}</div>
+          <div style={{marginTop:45,height:115,display:"flex",alignItems:"end",gap:12}}>
+            {[35,70,48,90,60,100].map((v,j)=><div key={j} style={{flex:1,height:`${v}%`,
+              background:j===3?C.yellow:C.cyan,boxShadow:"0 0 15px #35D9FF"}}/>)}
+          </div>
+          <div style={{fontFamily:MONO,fontSize:20,color:C.white,marginTop:35}}>EM TRANSFORMAÇÃO</div>
+        </div>;
+      })}
+      <Hud x={65} y={150} lines={["PROFISSÕES DO FUTURO","NOVAS POSSIBILIDADES"]}/>
+    </AbsoluteFill>
+  );
+};
+
+/* 6 — Humano e robô trabalhando juntos */
+export const SceneCollab: React.FC<P> = ({dur}) => {
+  const f = useCurrentFrame();
+  const glow = .5+.5*Math.sin(f*.12);
+  return (
+    <AbsoluteFill style={{background:"radial-gradient(ellipse at 50% 60%,#123D70,#02050B 72%)",overflow:"hidden"}}>
+      <ReelGlow x={280} y={720} size={650}/>
+      <ReelFigure x={40} y={850} scale={1.05} color="#A8C9FF"/>
+      <div style={{position:"absolute",right:90,top:870,width:360,height:540,
+        borderRadius:80,border:"4px solid #35D9FF",
+        background:"linear-gradient(145deg,#1C4C79,#02050B)",
+        boxShadow:`0 0 ${50+glow*50}px #168CFF99`}}>
+        <div style={{position:"absolute",left:75,top:120,width:210,height:100,
+          borderRadius:50,border:"3px solid #35D9FF",background:"#06152E"}}/>
+        <div style={{position:"absolute",left:110,top:155,width:35,height:18,background:C.cyan}}/>
+        <div style={{position:"absolute",right:110,top:155,width:35,height:18,background:C.cyan}}/>
+      </div>
+      <svg width="1080" height="1920" style={{position:"absolute",inset:0}}>
+        <path d="M300 1160 Q540 950 780 1160" fill="none" stroke={C.cyan}
+          strokeWidth="5" strokeDasharray="14 12" strokeDashoffset={-f*2}/>
+        <circle cx="540" cy="1050" r={90+glow*20} fill="none" stroke={C.yellow} strokeWidth="4" opacity=".8"/>
+      </svg>
+      <Hud x={65} y={150} lines={["HUMANO + INTELIGÊNCIA ARTIFICIAL","COLABORAÇÃO ATIVA"]}/>
+      <Particles n={40} seed="reel-collab"/>
+    </AbsoluteFill>
+  );
+};
+
+/* 7 — Close emocional no olhar humano */
+export const SceneHumanity: React.FC<P> = ({dur}) => {
+  const f = useCurrentFrame();
+  const zoom = interpolate(f,[0,dur],[1,1.28],CL);
+  return (
+    <AbsoluteFill style={{background:"radial-gradient(ellipse at 50% 45%,#183B64,#02050B 70%)",overflow:"hidden"}}>
+      <div style={{position:"absolute",left:90,top:500,width:900,height:700,
+        borderRadius:"50%",border:"3px solid #35D9FF66",
+        background:"linear-gradient(145deg,#29415F,#030711)",
+        transform:`scale(${zoom})`,boxShadow:"0 0 100px #087DFF55"}}>
+        <div style={{position:"absolute",left:130,top:250,width:640,height:180,
+          borderRadius:"50%",border:"5px solid #8CB8FF",
+          background:"radial-gradient(ellipse,#02050B 20%,#1C6A9D 40%,#02050B 72%)",
+          boxShadow:"0 0 60px #35D9FF88"}}>
+          <div style={{position:"absolute",left:280,top:45,width:80,height:80,
+            borderRadius:"50%",background:"#02050B",boxShadow:"0 0 25px #35D9FF"}}/>
+        </div>
+        <div style={{position:"absolute",left:300,top:500,width:300,height:5,background:C.cyan,opacity:.5}}/>
+      </div>
+      <Hud x={65} y={160} lines={["ESSÊNCIA HUMANA","CRIATIVIDADE // EMPATIA // ÉTICA"]}/>
+      <Particles n={25} seed="reel-humanity" speed={.3}/>
+    </AbsoluteFill>
+  );
+};
+
+/* 8 — Pergunta final e identidade Arvion Lab */
+export const SceneOutroAI: React.FC<P> = () => {
+  const f = useCurrentFrame();
+  const {fps}=useVideoConfig();
+  const enter=spring({frame:f-5,fps,config:{damping:14,stiffness:120}});
+  const logo=spring({frame:f-75,fps,config:{damping:15}});
+  const pulse=1+Math.sin(f*.15)*.025;
+  return (
+    <AbsoluteFill style={{background:"radial-gradient(ellipse at 50% 45%,#12366B,#02050B 72%)",
+      alignItems:"center",justifyContent:"center",overflow:"hidden"}}>
+      <ReelGlow x={220} y={400} size={650}/>
+      <Particles n={45} seed="reel-outro"/>
+      <div style={{fontFamily:MONO,fontSize:26,color:C.cyan,letterSpacing:7,opacity:enter}}>
+        // O FUTURO É AGORA
+      </div>
+      <div style={{fontFamily:FONT,fontSize:78,fontWeight:900,color:C.white,
+        textAlign:"center",lineHeight:1.12,marginTop:45,opacity:enter,
+        transform:`scale(${.8+enter*.2})`,textShadow:"0 0 45px #168CFF88"}}>
+        A IA VAI
+        <br/>SUBSTITUIR
+        <br/>OS HUMANOS?
+      </div>
+      <div style={{fontFamily:FONT,fontSize:37,fontWeight:900,color:C.yellow,
+        marginTop:55,opacity:enter,textAlign:"center"}}>
+        COMENTE: SIM OU NÃO
+      </div>
+      <div style={{position:"absolute",bottom:150,textAlign:"center",
+        opacity:logo,transform:`scale(${pulse})`}}>
+        <div style={{fontFamily:FONT,fontWeight:900,fontSize:66,letterSpacing:12,color:C.white}}>
+          ARVION <span style={{color:C.cyan}}>LAB</span>
+        </div>
+        <div style={{fontFamily:MONO,fontSize:22,color:"#9CB3D6",letterSpacing:5,marginTop:12}}>
+          {SIGNATURE.handle}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
