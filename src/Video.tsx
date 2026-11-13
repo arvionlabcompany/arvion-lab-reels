@@ -27,18 +27,31 @@ import {
   SceneOutroAI,
 } from "./scenes";
 
+import {
+  R4Comment,
+  R4City,
+  R4Office,
+  R4Jobs,
+  R4Skills,
+  R4Together,
+  R4Future,
+  R4Outro,
+} from "./Reel4Scenes";
+
+
 const OVERLAP = 12;
 const END = 60;
 
+
 const SC = [
-  { id: "future", from: 0, Comp: SceneFuture },
-  { id: "machine", from: 7, Comp: SceneMachine },
-  { id: "automation", from: 15, Comp: SceneAutomation },
-  { id: "human-vs-ai", from: 22, Comp: SceneHumanVsAI },
-  { id: "jobs", from: 29, Comp: SceneJobs },
-  { id: "collab", from: 37, Comp: SceneCollab },
-  { id: "humanity", from: 45, Comp: SceneHumanity },
-  { id: "outro-ai", from: 53, Comp: SceneOutroAI },
+  { id: "comment", from: 0, Comp: R4Comment },
+  { id: "city", from: 7, Comp: R4City },
+  { id: "office", from: 15, Comp: R4Office },
+  { id: "jobs", from: 22, Comp: R4Jobs },
+  { id: "skills", from: 29, Comp: R4Skills },
+  { id: "together", from: 37, Comp: R4Together },
+  { id: "future", from: 45, Comp: R4Future },
+  { id: "outro", from: 53, Comp: R4Outro },
 ];
 
 type ScriptEntry = {
